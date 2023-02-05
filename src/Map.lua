@@ -7,9 +7,9 @@ function Map:init(width, height)
   self.height = height
 end
 
-function Map:render()
+function Map:render(camera)
   -- only render what is on screen
-  local cx, cy = GlobalCamera:worldCoords(0, 0, 0, 0, V_WIDTH, V_HEIGHT)
+  local cx, cy = camera:worldCoords(0, 0, 0, 0, V_WIDTH, V_HEIGHT)
   local start = {
     x = math.max(0, math.floor(cx / TILE_SIZE)),
     y = math.max(0, math.floor(cy / TILE_SIZE))
