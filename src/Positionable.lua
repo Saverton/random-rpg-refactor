@@ -1,6 +1,6 @@
 -- Positionable - An Interface that all physically positioned objects share. Coordinate's an object's x, y, width, and height.
 
-Positionable = Class{}
+local Positionable = Class{}
 
 -- + Positionable:init(x, y, width, height) - creates a new Positionable object
 function Positionable:init(x, y, width, height)
@@ -17,6 +17,19 @@ function Positionable:collides_with(positionable)
 end
 
 -- + Positionable:can_fit(positionable) - returns true/false if length and width are less than or equal to (<=) than the compared positonable
-function Positionable:can_fit(positionable)
+function Positionable:canFit(positionable)
   return self.width <= positionable.width and self.height <= positionable.height
 end
+
+-- + Positionable:center() - returns the World Coordinate of the absolute center of the positionable object.
+function Positionable:getCenter()
+  return self.x + math.floor(self.width / 2),
+         self.y + math.floor(self.height / 2)
+end
+
+-- + Positionable.isPositionable() - returns true always, used to confirm that an object is positionable
+function Positionable.isPositionable()
+  return true
+end
+
+return Positionable

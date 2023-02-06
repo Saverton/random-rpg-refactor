@@ -1,6 +1,6 @@
 local COLORS = require 'src/colors'
 local Input = require 'lib/Input'
-local Character = Class{}
+local Character = Class{__includes = {Positionable, Bindable}}
 
 local SPEED = 50 -- pixels/second
 
@@ -11,11 +11,9 @@ local DIRECTION_CHOICES = {
   left = {x = -1, y = 0}
 }
 
-function Character:init()
-  self.width = 20
-  self.height = 20
-  self.x = 300
-  self.y = 200
+function Character:init(map)
+  Positionable.init(self, 300, 200, 16, 16)
+  Bindable.init(self, map)
   self.color = COLORS[1]
 
   self:bindInput()
@@ -33,6 +31,7 @@ function Character:update(dt)
   local direction = self:getInputDirection()
   self.x = self.x + (direction.x * SPEED * dt)
   self.y = self.y + (direction.y * SPEED * dt)
+  self:bind()
 end
 
 -- returns a movement modifying object (with x and y keys) based on keyboard input
@@ -66,11 +65,6 @@ function Character:render()
     self.height
   )
   love.graphics.setColor(1, 1, 1, 1)
-end
-
-function Character:center()
-  return self.x + math.floor(self.width / 2),
-         self.y + math.floor(self.height / 2)
 end
 
 return Character

@@ -1,8 +1,12 @@
 Timer = require 'lib/timer'
 Class = require 'lib/class'
+Positionable = require 'src/Positionable'
+Bindable = require 'src/Bindable'
+CameraManager = require 'src/CameraManager'
+Scene = require 'src/Scene'
+
 local push = require 'lib/push'
 
-Scene = require 'src/Scene'
 
 require 'src/sprites'
 
