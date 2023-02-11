@@ -9,11 +9,16 @@ StartState = require 'src/gameStates/StartState'
 PlayState = require 'src/gameStates/PlayState'
 
 -- Global Classes
-Positionable = require 'src/Positionable'
-CameraDependent = require 'src/CameraDependent'
-CameraManager = require 'src/CameraManager'
-Bindable = require 'src/Bindable'
-Scene = require 'src/Scene'
+  -- Interfaces
+    Positionable = require 'src/interfaces/Positionable'
+    Bindable = require 'src/interfaces/Bindable'
+  -- Game Objects
+    -- Camera
+      CameraDependent = require 'src/gameObjects/camera/CameraDependent'
+      CameraManager = require 'src/gameObjects/camera/CameraManager'
+    Scene = require 'src/gameObjects/Scene'
+    Map = require 'src/gameObjects/Map'
+    Character = require 'src/gameObjects/Character'
 
 -- Assets
-require 'src/sprites'
+require 'src/graphical/sprites'

@@ -1,6 +1,3 @@
-Map = require 'src/Map'
-Character = require 'src/Character'
-
 local Scene = Class{__includes = CameraDependent}
 
 function Scene:init()

@@ -1,4 +1,4 @@
-local COLORS = require 'src/colors'
+local COLORS = require 'src/graphical/colors'
 local Input = require 'lib/Input'
 local Character = Class{__includes = {Positionable, Bindable}}
 
