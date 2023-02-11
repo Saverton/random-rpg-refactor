@@ -37,5 +37,8 @@ function CameraDependent:getDependency(divisor)
 end
 
 -- + CameraDependent.isCameraDependent() - always returns true, used to determine if an object implements this interface
+function CameraDependent.isCameraDependent()
+  return true
+end
 
 return CameraDependent

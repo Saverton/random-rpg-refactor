@@ -1,6 +1,5 @@
 Map = require 'src/Map'
 Character = require 'src/Character'
-CameraDependent = require 'src/CameraDependent'
 
 local Scene = Class{__includes = CameraDependent}
 

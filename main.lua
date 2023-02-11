@@ -1,16 +1,4 @@
-Timer = require 'lib/timer'
-Class = require 'lib/class'
-Positionable = require 'src/Positionable'
-Bindable = require 'src/Bindable'
-CameraManager = require 'src/CameraManager'
-Scene = require 'src/Scene'
-
-local push = require 'lib/push'
-
-
-require 'src/sprites'
-
-local scene
+require 'src/dependencies'
 
 -- window dimensions
 V_WIDTH, V_HEIGHT = 256, 144
@@ -20,21 +8,12 @@ W_WIDTH, W_HEIGHT = W_WIDTH * 0.7, W_HEIGHT * 0.7
 function love.load()
   love.graphics.setDefaultFilter('nearest', 'nearest')
 
-  push:setupScreen(V_WIDTH, V_HEIGHT, W_WIDTH, W_HEIGHT, {resizable = true, fullscreen = false})
+  Push:setupScreen(V_WIDTH, V_HEIGHT, W_WIDTH, W_HEIGHT, {resizable = true, fullscreen = false})
 
-  scene = Scene()
+  GameState.registerEvents()
+  GameState.switch(StartState)
 end
 
 function love.resize(width, height)
-  push:resize(width, height)
-end
-
-function love.update(dt)
-  scene:update(dt)
-end
-
-function love.draw()
-  push:start()
-  scene:render()
-  push:finish()
+  Push:resize(width, height)
 end
